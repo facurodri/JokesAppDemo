@@ -7,6 +7,10 @@
         public string JokeQuestion { get; set; }
         public string JokeAnswer { get; set; }
 
-
+        // Class Method/Constructor
+        public Joke()
+        {
+            
+        }
     }
 }
