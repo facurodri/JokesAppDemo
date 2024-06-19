@@ -22,7 +22,13 @@
                 <input asp-for="JokeAnswer" class="form-control" />
                 <span asp-validation-for="JokeAnswer" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-select">
+                <label asp-for="Rating" class="control-label"></label>
+                <input asp-for="Rating" class="form-control" type="number" EnableMinMax="true" Min="0" Max="10"  />
+            </div> 
+            <br />
+            <br />
+            <div class="form-group row col-md-3">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>

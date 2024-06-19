@@ -9,7 +9,7 @@
 <h4>Joke</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-10">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
@@ -23,7 +23,13 @@
                 <input asp-for="JokeAnswer" class="form-control" />
                 <span asp-validation-for="JokeAnswer" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-select">
+                <label asp-for="Rating" class="control-label"></label>
+                <input asp-for="Rating" class="form-control" type="number" EnableMinMax="true" Min="0" Max="10" />
+            </div>
+            <br />
+            <br />
+            <div class="form-group row col-md-2">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
