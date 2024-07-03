@@ -54,11 +54,17 @@ namespace JokesAppDemo.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,JokeQuestion,JokeAnswer")] Joke joke)
+        public async Task<IActionResult> Create([Bind("Id,JokeQuestion,JokeAnswer,Rating")] Joke joke)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(joke);
+                var jokeCreated = new Joke();
+                jokeCreated.Id = joke.Id;
+                jokeCreated.JokeQuestion = joke.JokeQuestion;
+                jokeCreated.JokeAnswer = joke.JokeAnswer;
+                jokeCreated.Rating = joke.Rating;
+
+                _context.Add(jokeCreated);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -86,7 +92,7 @@ namespace JokesAppDemo.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,JokeQuestion,JokeAnswer")] Joke joke)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,JokeQuestion,JokeAnswer,Rating")] Joke joke)
         {
             if (id != joke.Id)
             {
